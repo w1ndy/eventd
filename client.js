@@ -1,5 +1,8 @@
-const host = process.env.HOST || 'localhost:8999'
-const socket = require('socket.io-client')(`http://${host}`, {
+const host = process.env.HOST || 'localhost'
+const port = process.env.PORT || 8999
+const uri = `http://${host}:${port}`
+
+const socket = require('socket.io-client')(uri, {
   'reconnection': true,
   'reconnectionDelay': 1000,
   'reconnectionDelayMax' : 5000,
@@ -16,10 +19,10 @@ const EVENTS = {
   }
 }
 
-console.log(`connecting to http://${host}...`)
+console.log(`connecting to master at ${uri}...`)
 
 socket.on('connect', () => {
-  console.log(`successfully connected to http://${host}`)
+  console.log(`successfully connected to ${uri}`)
 })
 
 socket.on('disconnect', () => {
