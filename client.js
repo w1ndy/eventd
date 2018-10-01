@@ -5,16 +5,15 @@ const uri = `http://${host}:${port}`
 const socket = require('socket.io-client')(uri, {
   'reconnection': true,
   'reconnectionDelay': 1000,
-  'reconnectionDelayMax' : 5000,
-  'reconnectionAttempts': 5
+  'reconnectionDelayMax' : 5000
 })
 
 const EVENTS = {
-  displaysleep: () => {
+  sleep: () => {
     const { spawn } = require('child_process')
-    const proc = spawn('pmset', ['displaysleepnow'])
+    const proc = spawn('pmset', ['sleepnow'])
     proc.on('close', code => {
-      console.log(`displaysleep invoked with ret code ${code}`)
+      console.log(`sleep invoked with ret code ${code}`)
     })
   }
 }
@@ -23,6 +22,10 @@ console.log(`connecting to master at ${uri}...`)
 
 socket.on('connect', () => {
   console.log(`successfully connected to ${uri}`)
+})
+
+socket.on('reconnecting', () => {
+  console.log('reconnecting...')
 })
 
 socket.on('disconnect', () => {
