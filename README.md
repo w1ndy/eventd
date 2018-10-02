@@ -16,5 +16,9 @@ HTTP Clients (curl, Siri Shortcuts, etc.) -- POST -> eventd Server (A) <- WebSoc
 3. Set up the client by running ``npm install && npm run client`` on Machine B.
 4. Invoke events by POSTing the ``8999`` port of Machine A (http://A:8999/invoke/<EVENT_NAME>) with API key (key=<API_KEY>)
 
+## Todo
+[ ] Add HTTPS support
+[ ] Authenticating clients on the server
+
 ## License
 MIT
