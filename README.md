@@ -17,8 +17,8 @@ HTTP Clients (curl, Siri Shortcuts, etc.) -- POST -> eventd Server (A) <- WebSoc
 4. Invoke events by POSTing the ``8999`` port of Machine A (http://A:8999/invoke/<EVENT_NAME>) with API key (key=<API_KEY>)
 
 ## Todo
-[ ] Add HTTPS support
-[ ] Authenticating clients on the server
+* [ ] Add HTTPS support
+* [ ] Authenticating clients on the server
 
 ## License
 MIT
